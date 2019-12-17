@@ -10,12 +10,12 @@ Now go to 'settings'->'Storage'.
 Set 'Enable USB web interface (Beta)' to "On"
 """)
 
-#input("Press the Return key when you have done so")
+input("Press the Return key when you have done so"
 
 url = 'http://10.11.99.1/documents/'
 
 
-resp = requests.get(url=url) #, params=params)
+resp = requests.get(url=url) 
 data = resp.json()
 for doc in data:
     print(doc["ID"])
