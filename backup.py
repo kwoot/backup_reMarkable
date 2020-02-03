@@ -23,4 +23,4 @@ for doc in data:
     print("Downloading '"+doc["VissibleName"]+"'")
     url = "http://10.11.99.1/download/"+doc["ID"]+"/placeholder"
     r = requests.get(url, allow_redirects=True)
-    open(doc["VissibleName"]+".pdf", 'wb').write(r.content)
+    open("backups/"+doc["VissibleName"]+".pdf", 'wb').write(r.content)
