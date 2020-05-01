@@ -4,6 +4,7 @@
 
 from pprint import pprint,pformat
 import requests
+import os
 
 print("""On the reMarkable, open the menu in the upper left corner.
 Now go to 'settings'->'Storage'.
@@ -11,6 +12,12 @@ Set 'Enable USB web interface (Beta)' to "On"
 """)
 
 input("Press the Return key when you have done so")
+
+result=1
+while result=1:
+  result=os.system("ping 10.11.99.1 -c 1")
+  if result!=0:
+    print("No connection to 10.11.99.1 found")
 
 url = 'http://10.11.99.1/documents/'
 
