@@ -14,7 +14,7 @@ Set 'Enable USB web interface (Beta)' to "On"
 input("Press the Return key when you have done so")
 
 result=1
-while result=1:
+while result!=0:
   result=os.system("ping 10.11.99.1 -c 1")
   if result!=0:
     print("No connection to 10.11.99.1 found")
