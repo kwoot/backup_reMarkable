@@ -13,12 +13,7 @@
 #for ID in $( curl  http://10.11.99.1/documents/ | jq  '.[]|.ID?')
 #do
   
-
-
-
 #done
 
 python3 ./backup.py
-git commit -a -m 'remarkable backup'
-git push
 
