@@ -1,0 +1,27 @@
+
+Upper text "My files" points to: <a class="path-last">My Files</a> with 2 event listeners,
+click function() {}
+
+onClick function() {
+          return t(oe(null))
+        }
+
+Download button in upper right corner:
+
+Rightclick on filename allows download of that file
+
+Network analyses:
+-get /
+-get css
+-get js
+post /documents/ fetch json
+get logo svg
+get gavicon
+
+
+curl  http://10.11.99.1/documents/ gives result set with documents.
+
+Downloading a single document:
+Request: http://10.11.99.1/download/c25f74f9-640d-4620-9ea1-1f008e2baf13/placeholder
+with c25f74f9-640d-4620-9ea1-1f008e2baf13 is the "ID" of the document
+
