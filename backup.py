@@ -22,6 +22,7 @@ import os
 print("""On the reMarkable, open the menu in the upper left corner.
 Now go to 'settings'->'Storage'.
 Set 'Enable USB web interface (Beta)' to "On"
+P.S. The reMarkable must be connected with the USB cable before the USB web interface can be toggled on.
 """)
 
 input("Press the Return key when you have done so")
