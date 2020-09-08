@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 # Script to download all documents of a reMarkable
 # J. Baten 20191217 Initial version
+# J. baten 20200907 Adapt to also allow WiFi connection (but unsure yet if that would work)
 
 # This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -20,28 +21,31 @@ import requests
 import os
 
 print("""On the reMarkable, open the menu in the upper left corner.
-Now go to 'settings'->'Storage'.
-Set 'Enable USB web interface (Beta)' to "On"
-P.S. The reMarkable must be connected with the USB cable before the USB web interface can be toggled on.
+Now go to 'settings'->'About'.
+In the right column, below GPLv3 Compliance is WiFi and root password information.
+Notice the IP address(es). 
+The correct one could be 10.11.99.1. Your milage may vary.
 """)
 
-input("Press the Return key when you have done so")
+my_ip=input("Enter the IP address here: ")
 
 result=1
 while result!=0:
-  result=os.system("ping 10.11.99.1 -c 1 > /dev/null 2>&1")
+  result=os.system("ping " + my_ip + " -c 1 > /dev/null 2>&1")
   if result!=0:
-    print("No connection to 10.11.99.1 found")
+    print("No connection to " + my_ip + " found. Can not help you. Sorry.")
 
-url = 'http://10.11.99.1/documents/'
+base_url= 'http://' + my_ip
+doc_url = base_url+ '/documents/'
+download_url=base_url+ '/download/'
 
-
-resp = requests.get(url=url) 
+print("Trying " + base_url +  "/  ... ")
+resp = requests.get(url=doc_url) 
 data = resp.json()
 for doc in data:
     print(doc["ID"])
     print(doc["VissibleName"])
     print("Downloading '"+doc["VissibleName"]+"'")
-    url = "http://10.11.99.1/download/"+doc["ID"]+"/placeholder"
+    url = download_url + doc["ID"]+"/placeholder"
     r = requests.get(url, allow_redirects=True)
     open("backups/"+doc["VissibleName"]+".pdf", 'wb').write(r.content)
